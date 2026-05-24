@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Dolce Vita — Italy 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --terra:#c1440e;--terra-light:#e05a28;--terra-dark:#8b2500;
+  --gold:#c9a84c;--gold-light:#e8c96a;
+  --cream:#faf6f0;--parchment:#ede4d0;--warm-white:#fff8f0;
+  --dark:#1e1a14;--mid:#4a3f30;--light:#7a6a55;--border:#ddd0bb;
+  --olive:#6b7c47;--blue-link:#1a6fa8;
+  --shadow:0 4px 24px rgba(30,26,20,.10);
+  --radius:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);line-height:1.65;font-size:15px}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:20px}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#1e1a14 0%,#3a2010 50%,#1e1a14 100%);z-index:0}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;mix-blend-mode:luminosity}
+.hero-watermark{position:absolute;font-family:'Playfair Display',serif;font-size:clamp(80px,18vw,200px);font-weight:700;color:rgba(255,255,255,.03);letter-spacing:.12em;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;z-index:1}
+.hero-inner{position:relative;z-index:2}
+.hero-flag{font-size:clamp(28px,6vw,52px);margin-bottom:12px}
+.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(42px,9vw,88px);font-weight:400;color:#fff;line-height:1.05;margin-bottom:8px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(13px,2.5vw,17px);color:rgba(255,255,255,.65);margin-bottom:28px}
+.hero-travelers{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
+.traveler-pill{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.35);color:var(--gold-light);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:500}
+.hero-route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.45);margin-bottom:40px}
+.hero-route strong{color:var(--gold);font-weight:600;font-size:13px}
+.hero-route span{opacity:.4}
+.scroll-cta{display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.45);font-size:12px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .2s}
+.scroll-cta:hover{color:var(--gold)}
+.scroll-cta .arrow{animation:bounce 1.8s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ── COUNTDOWN ── */
+.countdown-bar{background:var(--dark);padding:28px 20px}
+.countdown-inner{max-width:700px;margin:0 auto;text-align:center}
+.countdown-label{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.countdown-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.cd-block{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:64px}
+.cd-num{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,52px);font-weight:700;color:#fff;line-height:1}
+.cd-unit{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--light);font-weight:500}
+.cd-sep{font-family:'Playfair Display',serif;font-size:40px;color:var(--terra);align-self:center;line-height:1;margin-top:-8px}
+
+/* ── OVERVIEW STRIP ── */
+.overview{background:var(--terra);color:#fff;padding:22px 20px}
+.overview-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+.ov-card{background:rgba(255,255,255,.12);border-radius:10px;padding:12px 20px;text-align:center;min-width:120px}
+.ov-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
+.ov-val{font-weight:600;font-size:15px}
+
+/* ── SECTIONS ── */
+.section{max-width:900px;margin:0 auto;padding:52px 20px}
+.section-title{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,30px);font-weight:400}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── CITY HEADER ── */
+.city-header{background:var(--dark);color:#fff;padding:18px 24px;border-radius:var(--radius) var(--radius) 0 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:32px}
+.city-header h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:400}
+.city-dates{font-size:12px;color:var(--gold);letter-spacing:.08em}
+
+/* ── DAY CARD ── */
+.day-card{background:#fff;border:1px solid var(--border);border-top:none;overflow:hidden;transition:box-shadow .2s}
+.day-card:last-of-type{border-radius:0 0 var(--radius) var(--radius)}
+.day-card+.day-card{border-top:1px solid var(--border)}
+.day-toggle{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;padding:0;text-align:left;transition:background .15s}
+.day-toggle:hover{background:var(--warm-white)}
+.day-num-badge{background:var(--terra);color:#fff;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;min-width:64px;padding:18px 16px;text-align:center;align-self:stretch;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.day-toggle-content{flex:1;padding:14px 18px}
+.day-city-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:3px}
+.day-toggle-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--dark)}
+.day-toggle-sub{font-size:12px;color:var(--light);margin-top:2px}
+.day-chevron{padding:0 18px;font-size:20px;color:var(--terra);flex-shrink:0;transition:transform .3s}
+.day-chevron.open{transform:rotate(180deg)}
+.day-body{display:none;padding:0 20px 20px}
+.day-body.open{display:block}
+
+/* ── TIMELINE ── */
+.timeline{list-style:none;padding-top:14px}
+.tl-item{display:grid;grid-template-columns:60px 1fr;gap:12px;padding:7px 0;border-bottom:1px solid var(--parchment)}
+.tl-item:last-child{border-bottom:none}
+.tl-time{font-size:10.5px;font-weight:600;color:var(--terra);padding-top:2px;letter-spacing:.04em}
+.tl-text{font-size:13.5px;color:var(--mid);line-height:1.6}
+.tl-text strong{color:var(--dark);font-weight:600}
+.tl-text a{color:var(--blue-link);text-decoration:none}
+.tl-text a:hover{text-decoration:underline}
+
+/* ── TIPS ── */
+.tips-list{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.tip-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--olive);background:rgba(107,124,71,.08);border-radius:8px;padding:8px 12px}
+
+/* ── RESTAURANT CARDS ── */
+.restaurant-section{margin-top:18px}
+.restaurant-section-title{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;font-weight:600}
+.resto-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.resto-card{background:var(--parchment);border-radius:10px;padding:14px 16px;border-left:3px solid var(--terra)}
+.resto-name{font-weight:600;font-size:14px;color:var(--dark);margin-bottom:2px}
+.resto-tag{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--terra);color:#fff;border-radius:4px;padding:2px 8px;margin-bottom:6px}
+.resto-tag.breakfast{background:var(--gold)}
+.resto-tag.lunch{background:var(--olive)}
+.resto-tag.dinner{background:var(--terra-dark)}
+.resto-desc{font-size:12.5px;color:var(--mid);margin-bottom:8px;line-height:1.5}
+.map-btn{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--blue-link);text-decoration:none;font-weight:500}
+.map-btn:hover{text-decoration:underline}
+
+/* ── SUGGESTIONS BOX ── */
+.suggestions{margin-top:18px;background:linear-gradient(135deg,#1e1a14,#3a2010);border-radius:12px;padding:20px;color:#fff}
+.suggestions-title{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sug-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.sug-card{background:rgba(255,255,255,.07);border-radius:8px;padding:12px 14px}
+.sug-card h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
+.sug-card p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:6px}
+.sug-card a{font-size:11px;color:var(--gold);text-decoration:none}
+.sug-card a:hover{text-decoration:underline}
+
+/* ── HOTELS ── */
+.hotels-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.hotel-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.hotel-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--dark);margin-bottom:4px}
+.hotel-nights{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.hotel-detail{font-size:13px;color:var(--mid);line-height:1.6}
+.hotel-detail strong{color:var(--dark)}
+
+/* ── PACKING CHECKLIST ── */
+.checklist{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.check-item{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;transition:background .15s}
+.check-item:hover{background:var(--warm-white)}
+.check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--terra);flex-shrink:0;margin-top:1px;cursor:pointer}
+.check-item label{font-size:13.5px;color:var(--mid);cursor:pointer;line-height:1.5}
+.check-item.checked label{text-decoration:line-through;color:var(--light)}
+.check-count{font-size:13px;color:var(--light);margin-bottom:14px}
+.check-count strong{color:var(--terra)}
+
+/* ── QUICK REF TABLE ── */
+.qr-table{width:100%;border-collapse:collapse;font-size:13px}
+.qr-table th{background:var(--dark);color:var(--gold);padding:10px 12px;text-align:left;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.qr-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--mid);vertical-align:top}
+.qr-table tr:nth-child(even) td{background:var(--warm-white)}
+.qr-table td strong{color:var(--dark)}
+.qr-table a{color:var(--blue-link);text-decoration:none;font-size:12px}
+.qr-table a:hover{text-decoration:underline}
+.meal-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.mb-b{background:#fef3c7;color:#92400e}
+.mb-l{background:#d1fae5;color:#065f46}
+.mb-d{background:#fee2e2;color:#7f1d1d}
+
+/* ── USEFUL LINKS ── */
+.links-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.link-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:box-shadow .2s}
+.link-card:hover{box-shadow:var(--shadow)}
+.link-card h4{font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.link-card p{font-size:12px;color:var(--light);margin-bottom:8px}
+.link-card a{font-size:12px;color:var(--blue-link);text-decoration:none;font-weight:500}
+.link-card a:hover{text-decoration:underline}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.45);text-align:center;padding:36px 20px;font-size:12px;letter-spacing:.08em}
+footer .footer-flag{font-size:28px;margin-bottom:10px}
+footer strong{color:var(--gold)}
+
+/* ── UTILITIES ── */
+.mb-0{margin-bottom:0}.mt-16{margin-top:16px}
+@media(max-width:580px){
+  .hero h1{font-size:clamp(36px,12vw,60px)}
+  .tl-item{grid-template-columns:50px 1fr}
+  .cd-sep{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/1280px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" alt="Italy"/>
+  </div>
+  <div class="hero-watermark">ITALIA</div>
+  <div class="hero-inner">
+    <div class="hero-flag">🇮🇹</div>
+    <p class="hero-eyebrow">Private Family Itinerary · July 2026</p>
+    <h1><em>La Dolce Vita</em></h1>
+    <p class="hero-sub">Rome · Florence · Portofino · Milan</p>
+    <div class="hero-travelers">
+      <span class="traveler-pill">👨 Mehdi</span>
+      <span class="traveler-pill">👩 Yasmeen</span>
+      <span class="traveler-pill">👧 Selma</span>
+      <span class="traveler-pill">👨 Ibrahim</span>
+      <span class="traveler-pill">👰 Hajer</span>
+    </div>
+    <div class="hero-route">
+      <strong>✈ MXP/LIN</strong><span>→</span>
+      <strong>🏛 ROME</strong><span>→</span>
+      <strong>🌸 FLORENCE</strong><span>→</span>
+      <strong>⛵ PORTOFINO</strong><span>→</span>
+      <strong>🏙 MILAN</strong><span>→</span>
+      <strong>✈ MXP/LIN</strong>
+    </div>
+    <a href="#days" class="scroll-cta">
+      <span>Explore the Itinerary</span>
+      <span class="arrow">↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ COUNTDOWN ═══ -->
+<div class="countdown-bar">
+  <div class="countdown-inner">
+    <p class="countdown-label">Countdown to Italy — July 20, 2026</p>
+    <div class="countdown-grid">
+      <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Days</div></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit">Hours</div></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><div class="cd-num" id="cd-min">--</div><div class="cd-unit">Minutes</div></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><div class="cd-num" id="cd-sec">--</div><div class="cd-unit">Seconds</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ OVERVIEW STRIP ═══ -->
+<div class="overview">
+  <div class="overview-inner">
+    <div class="ov-card"><div class="ov-label">Travelers</div><div class="ov-val">5 People</div></div>
+    <div class="ov-card"><div class="ov-label">Duration</div><div class="ov-val">9 Days</div></div>
+    <div class="ov-card"><div class="ov-label">Flights</div><div class="ov-val">Pre-booked ✓</div></div>
+    <div class="ov-card"><div class="ov-label">Currency</div><div class="ov-val">Euro (€)</div></div>
+    <div class="ov-card"><div class="ov-label">Emergency</div><div class="ov-val">112</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ DAY BY DAY ═══ -->
+<div id="days" class="section">
+  <div class="section-title"><h2>Day by Day</h2></div>
+
+  <!-- ─── ROME ─── -->
+  <div class="city-header">
+    <h3>🏛 Rome</h3>
+    <div class="city-dates">July 20 – 23, 2026 · 3 nights</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">01</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Rome</div>
+        <div class="day-toggle-title">Arrival — Settle In & Evening Stroll</div>
+        <div class="day-toggle-sub">Monday, July 20 · Spanish Steps · Sorbillo</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">09:25</span><span class="tl-text"><strong>Mehdi arrives</strong> Milan Malpensa (DL0276). Drop suitcase at Best Western Linate — don't check in, just store bags.</span></li>
+        <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-text"><strong>Yasmeen & Selma arrive</strong> Milan Linate (LH1852). Meet Mehdi at the arrival hall.</span></li>
+        <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-text"><strong>Fly AZ2059</strong> Milan Linate → Rome FCO. Departs 16:00, arrives 17:10.</span></li>
+        <li class="tl-item"><span class="tl-time">17:45</span><span class="tl-text"><strong>Limousine transfer</strong> FCO → Airbnb at <a href="https://www.google.com/maps/search/?api=1&query=Via+della+Frezza+59+Roma" target="_blank">Via della Frezza, 59, Rome</a>. Steps from Piazza del Popolo.</span></li>
+        <li class="tl-item"><span class="tl-time">19:30</span><span class="tl-text">Check in, freshen up, light unpack.</span></li>
+        <li class="tl-item"><span class="tl-time">20:30</span><span class="tl-text">Evening stroll: <strong>Piazza di Spagna</strong> (Spanish Steps) → <strong>Piazza del Popolo</strong> → Fontana. Magical after dark with far fewer tourists.</span></li>
+        <li class="tl-item"><span class="tl-time">21:30</span><span class="tl-text"><strong>Dinner at Sorbillo</strong> — legendary Neapolitan pizza. Book a table ahead! <a href="https://sorbillo.it" target="_blank">sorbillo.it</a></span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Stay awake until at least 21:00 local time — it resets your body clock for European time faster.</div>
+        <div class="tip-item">💡 Piazza di Spagna is most photogenic and peaceful after 21:00 — far fewer crowds than midday.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Tonight's Dinner</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Sorbillo</div>
+            <div><span class="resto-tag dinner">Dinner</span></div>
+            <div class="resto-desc">Legendary Neapolitan pizza. One of Rome's most beloved spots. Expect a queue — reserve ahead!</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Sorbillo+Roma" target="_blank">📍 Open in Maps</a>
+            &nbsp;<a class="map-btn" href="https://sorbillo.it" target="_blank">🔗 Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">02</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Rome</div>
+        <div class="day-toggle-title">Historic Core — Piazzas, Ruins & Trattorias</div>
+        <div class="day-toggle-sub">Tuesday, July 21 · Navona · Pantheon · Fettuccine Alfredo</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">08:00</span><span class="tl-text"><strong>Breakfast at Sant'Eustachio il Caffè</strong> — Rome's most legendary coffee since 1938. The Gran Caffè is unmissable. <a href="https://www.google.com/maps/search/?api=1&query=Sant+Eustachio+il+Caffe+Roma" target="_blank">📍 Piazza di Sant'Eustachio, 82</a></span></li>
+        <li class="tl-item"><span class="tl-time">09:30</span><span class="tl-text"><strong>Piazza Navona</strong> — Baroque masterpiece with Bernini's Fountain of the Four Rivers. Free entry. One of Rome's most beautiful squares.</span></li>
+        <li class="tl-item"><span class="tl-time">10:30</span><span class="tl-text"><strong>Campo de' Fiori</strong> — Vibrant morning market (closes 14:00). Browse fresh produce, local cheeses, spices.</span></li>
+        <li class="tl-item"><span class="tl-time">11:15</span><span class="tl-text"><strong>Pantheon</strong> — One of Rome's greatest wonders (~€5 entry). Book timed entry online to avoid queues. <a href="https://www.google.com/maps/search/?api=1&query=Pantheon+Roma" target="_blank">📍 Maps</a></span></li>
+        <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-text"><strong>Lunch:</strong> Forno Campo de' Fiori (pizza al taglio & baked goods) + <strong>Supplizio</strong> for Rome's best supplì. <a href="https://www.google.com/maps/search/?api=1&query=Forno+Campo+de+Fiori+Roma" target="_blank">📍 Campo de' Fiori, 22</a></span></li>
+        <li class="tl-item"><span class="tl-time">15:00</span><span class="tl-text"><strong>Piazza Venezia</strong> — Visit the Altare della Patria (Vittoriano). Free rooftop terrace with sweeping 360° Rome views.</span></li>
+        <li class="tl-item"><span class="tl-time">20:30</span><span class="tl-text"><strong>Dinner at Il Vero Alfredo</strong> — birthplace of Fettuccine Alfredo since 1914. A Rome institution with theatrical pasta preparation tableside. <a href="https://ilveroalfredo.it" target="_blank">ilveroalfredo.it</a></span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 The Pantheon is free on the first Sunday of each month!</div>
+        <div class="tip-item">💡 All religious sites require covered shoulders & knees — carry a light scarf.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Sant'Eustachio il Caffè</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Rome's most legendary coffee bar since 1938. Their secret Gran Caffè recipe is iconic.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Santeustachioilcaffe+Roma" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://santeustachioilcaffe.it" target="_blank">🔗 Website</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Forno Campo de' Fiori + Supplizio</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">Street food combo: Roman pizza al taglio + Rome's finest supplì. Casual, quick, authentic.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Forno+Campo+de+Fiori+Roma" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Il Vero Alfredo</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Original Fettuccine Alfredo since 1914. Theatrical tableside preparation. A true Rome experience.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Il+Vero+Alfredo+Roma" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://ilveroalfredo.it" target="_blank">🔗 Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">03</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Rome</div>
+        <div class="day-toggle-title">Ancient Rome & Vatican Day</div>
+        <div class="day-toggle-sub">Wednesday, July 22 · Colosseum · Sistine Chapel · Trastevere</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">08:30</span><span class="tl-text"><strong>Breakfast at Giolitti</strong> — Rome's oldest gelateria & café (est. 1900). Cornetto + cappuccino + first gelato of the trip. <a href="https://www.google.com/maps/search/?api=1&query=Giolitti+Roma" target="_blank">📍 Via Uffici del Vicario, 40</a></span></li>
+        <li class="tl-item"><span class="tl-time">09:30</span><span class="tl-text"><strong>Colosseum + Roman Forum + Palatine Hill</strong> — Combined ticket ~€18/person. <strong>Must book online in advance!</strong> Allow 3–4 hours. <a href="https://www.coopculture.it" target="_blank">coopculture.it</a></span></li>
+        <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-text"><strong>Lunch at Mama Eat Vaticano</strong> — Excellent Roman dishes, great gluten-free options, near Vatican. <a href="https://www.google.com/maps/search/?api=1&query=Mama+Eat+Vaticano+Roma" target="_blank">📍 Via Cola di Rienzo, 9</a></span></li>
+        <li class="tl-item"><span class="tl-time">14:30</span><span class="tl-text"><strong>Vatican Museums + Sistine Chapel</strong> — Book skip-the-line tickets well in advance. Arrive at 08:00 opening for the best experience. <a href="https://www.museivaticani.va" target="_blank">museivaticani.va</a></span></li>
+        <li class="tl-item"><span class="tl-time">16:30</span><span class="tl-text"><strong>St. Peter's Basilica</strong> — Free entry to the basilica. Climb the dome (~€8) for panoramic Rome views. Michelangelo's Pietà is inside.</span></li>
+        <li class="tl-item"><span class="tl-time">20:00</span><span class="tl-text"><strong>Dinner:</strong> Supplì Roma for street food, then <strong>Ivo a Trastevere</strong> or <strong>Nannarella</strong> for sit-down Roman classics. <a href="https://www.google.com/maps/search/?api=1&query=Trastevere+Roma+restaurant" target="_blank">📍 Trastevere</a></span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Vatican dress code is strict — no bare shoulders or knees. Security will turn you away.</div>
+        <div class="tip-item">💡 The Sistine Chapel is nearly empty at 8am opening — worth the early start to experience it in near-silence!</div>
+        <div class="tip-item">💡 The Knights of Malta keyhole on Aventine Hill gives a perfectly framed view of St. Peter's dome — completely free and crowd-free.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Giolitti</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Rome's oldest café & gelateria, est. 1900. Classic Roman breakfast + legendary gelato.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Giolitti+Roma" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://giolitti.it" target="_blank">🔗 Website</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Mama Eat Vaticano</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">Roman trattoria near Vatican with excellent gluten-free options and classic pasta dishes.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Mama+Eat+Vaticano+Roma" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Supplì Roma + Ivo Trastevere</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Street food supplì + sit-down Roman classics in the beautiful Trastevere neighborhood.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Trastevere+Roma" target="_blank">📍 Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">04</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Rome → Florence</div>
+        <div class="day-toggle-title">Final Roman Morning + Frecciarossa to Florence</div>
+        <div class="day-toggle-sub">Thursday, July 23 · Trevi · Train 14:10 · Arrive 15:46</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">08:00</span><span class="tl-text"><strong>Breakfast at Tazza d'Oro</strong> — One of Rome's great historic coffeehouses. <a href="https://www.google.com/maps/search/?api=1&query=Tazza+d+Oro+Roma" target="_blank">📍 Via degli Orfani, 84</a></span></li>
+        <li class="tl-item"><span class="tl-time">09:30</span><span class="tl-text"><strong>Fontana di Trevi</strong> — Best before 10am. Toss your coin left hand over right shoulder = guaranteed return to Rome! 🪙</span></li>
+        <li class="tl-item"><span class="tl-time">10:30</span><span class="tl-text"><strong>Via del Corso & Piazza di Spagna</strong> — Window shopping, people-watching, final Rome photos.</span></li>
+        <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-text"><strong>Lunch from Antico Vinaio</strong> — Rome branch of Florence's legendary schiacciata sandwich shop. Perfect pre-train meal. <a href="https://anticopaninovinaio.com" target="_blank">anticopaninovinaio.com</a></span></li>
+        <li class="tl-item"><span class="tl-time">14:10</span><span class="tl-text">🚄 <strong>Frecciarossa 9540</strong> — Roma Termini → Firenze S.M.N. Departs 14:10, arrives 15:46.</span></li>
+        <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-text">Walk ~1 mile (20 min) from station to Airbnb at <a href="https://www.google.com/maps/search/?api=1&query=Via+Isola+delle+Stinche+2+Firenze" target="_blank">Via Isola delle Stinche, 2, Florence</a>. Check in.</span></li>
+        <li class="tl-item"><span class="tl-time">21:00</span><span class="tl-text"><strong>Dinner at Trattoria dall'Oste</strong> — beloved Florentine trattoria. Classic bistecca Fiorentina & ribollita. <a href="https://www.google.com/maps/search/?api=1&query=Trattoria+dallOste+Firenze" target="_blank">📍 Via Luigi Alamanni, 3</a></span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Validate train tickets at the platform machines before boarding — an inspector will fine you otherwise.</div>
+        <div class="tip-item">💡 The walk from SMN station to the Airbnb is entirely on cobblestones — pack light or bring wheeled luggage that handles bumps.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">La Casa del Caffè Tazza d'Oro</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Historic Roman coffeehouse. Try their frozen granita di caffè con panna in summer — a revelation.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Tazza+d+Oro+Roma" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Antico Vinaio</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">Florence's most famous sandwich shop, now in Rome. Schiacciata stuffed with premium Italian ingredients.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Antico+Vinaio+Roma" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://anticopaninovinaio.com" target="_blank">🔗 Website</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Trattoria dall'Oste</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Authentic Florentine trattoria. Order the bistecca Fiorentina, ribollita, and house Chianti.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Trattoria+dallOste+Firenze" target="_blank">📍 Maps</a>
+          </div>
+        </div>
+      </div>
+      <!-- Rome Suggestions -->
+      <div class="suggestions mt-16">
+        <div class="suggestions-title">✨ Rome — Bonus Suggestions</div>
+        <div class="sug-grid">
+          <div class="sug-card"><h4>🍹 Aperitivo Hour</h4><p>18:00–20:00: order one drink, many bars include a free buffet. Try Pigneto or Prati neighbourhoods.</p><a href="https://www.thefork.com" target="_blank">→ thefork.com/rome</a></div>
+          <div class="sug-card"><h4>👄 Bocca della Verità</h4><p>The Mouth of Truth — free, photogenic, crowd-free before 9am. Via del Velabro.</p><a href="https://www.google.com/maps/search/?api=1&query=Bocca+della+Verita+Roma" target="_blank">→ Open in Maps</a></div>
+          <div class="sug-card"><h4>🍦 Best Gelato</h4><p>Fatamorgana (creative flavours) or Fior di Luna (Trastevere) — far better than tourist-trap spots.</p><a href="https://fatamorgana.it" target="_blank">→ fatamorgana.it</a></div>
+          <div class="sug-card"><h4>🏛 Borghese Gallery</h4><p>World-class Bernini sculptures in a villa park. Only 360 visitors per slot — book weeks ahead!</p><a href="https://galleriaborghese.it" target="_blank">→ galleriaborghese.it</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FLORENCE ─── -->
+  <div class="city-header">
+    <h3>🌸 Florence</h3>
+    <div class="city-dates">July 23 – 24, 2026 · 1 night</div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">05</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Florence</div>
+        <div class="day-toggle-title">Renaissance Masterpieces & Road to Bologna</div>
+        <div class="day-toggle-sub">Friday, July 24 · Uffizi · Ponte Vecchio · Bologna dinner</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">08:30</span><span class="tl-text"><strong>Breakfast at Procacci</strong> — Elegant historic café famed for truffle panini since 1885. A Florence institution. <a href="https://procacci1885.it" target="_blank">procacci1885.it</a> — <a href="https://www.google.com/maps/search/?api=1&query=Procacci+Firenze" target="_blank">📍 Via de' Tornabuoni, 64</a></span></li>
+        <li class="tl-item"><span class="tl-time">09:30</span><span class="tl-text"><strong>Uffizi Gallery</strong> — Botticelli's Birth of Venus, Michelangelo, da Vinci. Book skip-the-line ~€20. <a href="https://www.uffizi.it" target="_blank">uffizi.it</a></span></li>
+        <li class="tl-item"><span class="tl-time">11:30</span><span class="tl-text"><strong>Ponte Vecchio</strong> — Florence's famous medieval bridge lined with goldsmiths. Cross to the Oltrarno neighbourhood.</span></li>
+        <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-text"><strong>Piazzale Michelangelo</strong> — Panoramic view over the entire city. Best photo spot in Tuscany. Completely free! 🌅</span></li>
+        <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-text"><strong>Lunch at Il Pizzaiuolo</strong> — Authentic Neapolitan pizza in Florence. Hugely popular with locals. <a href="https://www.google.com/maps/search/?api=1&query=Il+Pizzaiuolo+Firenze" target="_blank">📍 Via de' Macci, 113</a></span></li>
+        <li class="tl-item"><span class="tl-time">15:30</span><span class="tl-text"><strong>Brunelleschi's Dome</strong> — 463 steps to the top of the Florence Cathedral. Pre-book online ~€18 combined ticket.</span></li>
+        <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-text">🚗 <strong>Pick up rental car from Avis</strong> at <a href="https://www.google.com/maps/search/?api=1&query=Avis+Via+Maso+Finiguerra+Firenze" target="_blank">Via Maso Finiguerra, 13</a>. <a href="https://avis.com" target="_blank">avis.com</a></span></li>
+        <li class="tl-item"><span class="tl-time">18:30</span><span class="tl-text"><strong>Drive to Bologna</strong> (~1 hour). <strong>Dinner at Antica Trattoria del Cacciatore</strong> — historic Bolognese cuisine. <a href="https://www.google.com/maps/search/?api=1&query=Antica+Trattoria+del+Cacciatore+Bologna" target="_blank">📍 Via Caduti di Casteldebole, 25, Bologna</a></span></li>
+        <li class="tl-item"><span class="tl-time">21:00</span><span class="tl-text"><strong>Shopping at Mall Shopville Gran Reno</strong> — outlet mall near Bologna. Check closing times before leaving.</span></li>
+        <li class="tl-item"><span class="tl-time">22:30</span><span class="tl-text">Drive to <strong>Best Western Air Hotel Linate</strong> (~2h 30min). Check in for the night.</span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 ZTL zones (restricted traffic zones) in Florence centre — DO NOT drive inside the historic ring or you'll face automatic fines mailed home.</div>
+        <div class="tip-item">💡 Book the Avis car at least 48 hours ahead to guarantee your vehicle class. Confirm pickup process as an international traveler.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Procacci</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Legendary since 1885. Famous for their tiny truffle-butter panini. A Florence ritual.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Procacci+Firenze" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://procacci1885.it" target="_blank">🔗 Website</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Il Pizzaiuolo</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">The best Neapolitan pizza in Florence. Always busy, always worth it. Arrive early or queue.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Il+Pizzaiuolo+Firenze" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Antica Trattoria del Cacciatore</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Historic Bologna trattoria. Classic tagliatelle al ragù, tortellini in brodo. The real deal.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Antica+Trattoria+del+Cacciatore+Bologna" target="_blank">📍 Maps</a>
+          </div>
+        </div>
+      </div>
+      <!-- Florence Suggestions -->
+      <div class="suggestions mt-16">
+        <div class="suggestions-title">✨ Florence — Bonus Suggestions</div>
+        <div class="sug-grid">
+          <div class="sug-card"><h4>🏪 Mercato Centrale</h4><p>Florence's stunning iron-and-glass market. Ground floor: fresh produce. Upper floor: gourmet food hall.</p><a href="https://mercatocentrale.it" target="_blank">→ mercatocentrale.it</a></div>
+          <div class="sug-card"><h4>🏘 Oltrarno District</h4><p>The "wrong side" of the Arno — artisan workshops, real trattorias, zero tour groups. Walk after dinner.</p><a href="https://www.google.com/maps/search/?api=1&query=Oltrarno+Firenze" target="_blank">→ Open in Maps</a></div>
+          <div class="sug-card"><h4>⛪ San Miniato al Monte</h4><p>Hilltop church with Gregorian chant at 17:30 daily. Free to enter. Sunset views are unforgettable.</p><a href="https://sanminiatoalmonte.it" target="_blank">→ sanminiatoalmonte.it</a></div>
+          <div class="sug-card"><h4>🍦 Gelateria dei Neri</h4><p>Locals' favourite near the Airbnb. No artificial colours, enormous portions, tiny prices.</p><a href="https://www.google.com/maps/search/?api=1&query=Gelateria+dei+Neri+Firenze" target="_blank">→ Via dei Neri, 9-11r</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MILAN / PORTOFINO ─── -->
+  <div class="city-header">
+    <h3>⛵ Portofino + 🏙 Milan</h3>
+    <div class="city-dates">July 25 – 27, 2026 · 2 nights</div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">06</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Milan</div>
+        <div class="day-toggle-title">Ibrahim & Hajer Arrive — Navigli, Duomo & DRY</div>
+        <div class="day-toggle-sub">Saturday, July 25 · CX233 Hong Kong · Group Reunites</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">07:00</span><span class="tl-text"><strong>Yasmeen & Selma</strong> have breakfast at Best Western Hotel.</span></li>
+        <li class="tl-item"><span class="tl-time">08:00</span><span class="tl-text"><strong>Mehdi drives to Malpensa Airport</strong> to pick up Ibrahim & Hajer (flight CX233 from Hong Kong, arrives 08:00).</span></li>
+        <li class="tl-item"><span class="tl-time">09:00</span><span class="tl-text"><strong>Drop luggage at Crowne Plaza Milan Linate by IHG.</strong> <a href="https://www.ihg.com/crowneplaza" target="_blank">ihg.com/crowneplaza</a></span></li>
+        <li class="tl-item"><span class="tl-time">09:30</span><span class="tl-text"><strong>Breakfast (Mehdi, Ibrahim, Hajer)</strong> at Forno Paradiso. <a href="https://www.google.com/maps/search/?api=1&query=Forno+Paradiso+Via+Lucio+Fontana+9+Segrate" target="_blank">📍 Via Lucio Fontana, 9, Segrate</a></span></li>
+        <li class="tl-item"><span class="tl-time">11:00</span><span class="tl-text"><strong>Navigli Canal District</strong> — Milan's coolest neighbourhood. Vintage markets, aperitivo bars, street art, canal walks.</span></li>
+        <li class="tl-item"><span class="tl-time">12:30</span><span class="tl-text"><strong>Duomo di Milano</strong> — Rooftop terrace climb (~€13). Then stroll through Galleria Vittorio Emanuele II — Milan's 19th-century shopping arcade.</span></li>
+        <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-text"><strong>Lunch:</strong> Napoli 1820 in Navigli <em>or</em> Di Gennaro near Duomo. <a href="https://www.google.com/maps/search/?api=1&query=Di+Gennaro+Via+Santa+Radegonda+14+Milano" target="_blank">📍 Via Santa Radegonda, 14</a></span></li>
+        <li class="tl-item"><span class="tl-time">16:00</span><span class="tl-text"><strong>Free afternoon</strong> — Brera art district, window shopping on Via Montenapoleone, Castello Sforzesco gardens.</span></li>
+        <li class="tl-item"><span class="tl-time">20:00</span><span class="tl-text"><strong>Dinner at DRY Milano</strong> — Creative artisan pizza + innovative cocktails in a sleek Brera space. <a href="https://drymilano.it" target="_blank">drymilano.it</a> — <a href="https://www.google.com/maps/search/?api=1&query=Dry+Milano+Via+Solferino+33" target="_blank">📍 Via Solferino, 33</a></span></li>
+        <li class="tl-item"><span class="tl-time">22:00</span><span class="tl-text"><strong>All 5 spend the night</strong> at Crowne Plaza Milan Linate by IHG. 🎉</span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Duomo dress code strictly enforced — guards at the door. Shoulders and knees must be covered.</div>
+        <div class="tip-item">💡 Navigli aperitivo (18:00–21:00): order one drink (~€10) and enjoy a free spread of food. Milan's best budget dinner secret.</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Forno Paradiso</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Fresh-baked bread, cornetti, pastries. A local Segrate favourite, perfect post-airport stop.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Forno+Paradiso+Segrate" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Napoli 1820 / Di Gennaro</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">Neapolitan pizza in the heart of Milan. Di Gennaro is the classic choice, steps from the Duomo.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Di+Gennaro+Milano" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">DRY Milano</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Milan's best creative pizza bar. Award-winning cocktails + artisan pies in a cool Brera setting.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Dry+Milano" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://drymilano.it" target="_blank">🔗 Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">07</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Portofino Day Trip</div>
+        <div class="day-toggle-title">Italian Riviera — Ferry, Castello Brown & Serravalle</div>
+        <div class="day-toggle-sub">Sunday, July 26 · Santa Margherita · Portofino · Designer Outlet</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">08:30</span><span class="tl-text"><strong>Leave hotel.</strong> Breakfast to-go from <strong>Ritual Café</strong> (Via Cesare Battisti, San Donato Milanese) <em>or</em> Autogrill Dorno on the A7 motorway.</span></li>
+        <li class="tl-item"><span class="tl-time">10:30</span><span class="tl-text">🅿️ <strong>Park at Parcheggio Pescherie</strong>, Santa Margherita Ligure (~€3–5/hr). <a href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Pescherie+Santa+Margherita+Ligure" target="_blank">📍 Largo Pescheria, Santa Margherita</a></span></li>
+        <li class="tl-item"><span class="tl-time">11:00</span><span class="tl-text">⛴️ <strong>Ferry to Portofino</strong> from Santa Margherita (~€8 return, 20 min). <a href="https://tigullio.trasporti.it" target="_blank">tigullio.trasporti.it</a></span></li>
+        <li class="tl-item"><span class="tl-time">11:30</span><span class="tl-text"><strong>Explore Portofino village</strong> — the iconic pastel harbour, lighthouse path (free), boutique browsing. Pure Italian Riviera magic.</span></li>
+        <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-text"><strong>Castello Brown</strong> — Panoramic fort with terrace views over the entire bay. Entry ~€6. <a href="https://castellobrown.com" target="_blank">castellobrown.com</a></span></li>
+        <li class="tl-item"><span class="tl-time">13:30</span><span class="tl-text"><strong>Lunch at Trattoria San Siro</strong>, back in Santa Margherita — excellent value vs Portofino prices! <a href="https://www.google.com/maps/search/?api=1&query=Trattoria+San+Siro+Santa+Margherita+Ligure" target="_blank">📍 Corso Matteotti, 137</a></span></li>
+        <li class="tl-item"><span class="tl-time">15:00</span><span class="tl-text"><strong>Walk the Lungomare Marconi</strong> promenade in Santa Margherita. Optional swim at Paraggi beach — crystal clear water.</span></li>
+        <li class="tl-item"><span class="tl-time">17:30</span><span class="tl-text">🚗 <strong>Drive back toward Milan</strong> (~2h 30min). Stop in Serravalle.</span></li>
+        <li class="tl-item"><span class="tl-time">19:30</span><span class="tl-text"><strong>Dinner at Eataly Serravalle</strong> — gourmet Italian food market + restaurant. <a href="https://www.eataly.net/it_en/stores/serravalle" target="_blank">eataly.net</a> — <a href="https://www.google.com/maps/search/?api=1&query=Eataly+Serravalle+Scrivia" target="_blank">📍 Via della Moda 1</a></span></li>
+        <li class="tl-item"><span class="tl-time">20:30</span><span class="tl-text"><strong>Designer Outlet Serravalle</strong> — 180+ luxury brands at outlet prices. <a href="https://mcarthurglen.com/serravalle" target="_blank">mcarthurglen.com/serravalle</a></span></li>
+        <li class="tl-item"><span class="tl-time">22:30</span><span class="tl-text"><strong>Return to Crowne Plaza Milan Linate.</strong> All 5 spend the night.</span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Portofino has almost no affordable restaurants — dining there for lunch/dinner costs 3–4× more than Santa Margherita. Eat on the mainland!</div>
+        <div class="tip-item">💡 Paraggi Beach (between Santa Margherita and Portofino) has the most crystal-clear water of the Riviera and is much quieter.</div>
+        <div class="tip-item">💡 The ferry may be cancelled in bad weather — have a backup plan to drive directly to Portofino instead (30 min + parking fee).</div>
+      </div>
+      <div class="restaurant-section">
+        <div class="restaurant-section-title">🍽 Restaurants Today</div>
+        <div class="resto-grid">
+          <div class="resto-card">
+            <div class="resto-name">Ritual Café / Autogrill Dorno</div>
+            <span class="resto-tag breakfast">Breakfast</span>
+            <div class="resto-desc">Quick breakfast to-go before the drive. Ritual Café has great pastries; Autogrill is Italy's iconic motorway stop.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Ritual+Cafe+San+Donato+Milanese" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Trattoria San Siro</div>
+            <span class="resto-tag lunch">Lunch</span>
+            <div class="resto-desc">Solid Ligurian seafood and pasta in Santa Margherita. Far better value than eating in Portofino itself.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Trattoria+San+Siro+Santa+Margherita+Ligure" target="_blank">📍 Maps</a>
+          </div>
+          <div class="resto-card">
+            <div class="resto-name">Eataly Serravalle</div>
+            <span class="resto-tag dinner">Dinner</span>
+            <div class="resto-desc">Italy's famous gourmet food marketplace. Restaurants, fresh pasta, artisan cheeses, wines — all under one roof.</div>
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Eataly+Serravalle+Scrivia" target="_blank">📍 Maps</a>
+            &nbsp;<a class="map-btn" href="https://www.eataly.net/it_en/stores/serravalle" target="_blank">🔗 Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">08</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Departures Day</div>
+        <div class="day-toggle-title">Yasmeen & Selma · Ibrahim & Hajer Fly · Mehdi's Last Night</div>
+        <div class="day-toggle-sub">Monday, July 27 · Flights to Tunis · Mehdi to Casorate</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-text"><strong>Mehdi drops off Yasmeen & Selma</strong> at Milan Linate. Flight AZ2133 (13:00 LIN → Rome), then AZ866 (17:00 Rome → Tunis, arrives 17:20).</span></li>
+        <li class="tl-item"><span class="tl-time">18:30</span><span class="tl-text"><strong>Mehdi drops off Ibrahim & Hajer</strong> at Linate for flight to Rome (19:00) then onward → Tunis, arriving 22:20.</span></li>
+        <li class="tl-item"><span class="tl-time">19:30</span><span class="tl-text"><strong>Mehdi checks in at Hotel Osteria della Pista</strong>, Via Verbano 1, Casorate Sempione (5 min from MXP). <a href="https://osteriadellapista.it" target="_blank">osteriadellapista.it</a></span></li>
+        <li class="tl-item"><span class="tl-time">20:00</span><span class="tl-text"><strong>Return rental car to Avis MXP (Ferno location)</strong> — return with a FULL TANK to avoid surcharges.</span></li>
+        <li class="tl-item"><span class="tl-time">21:00</span><span class="tl-text"><strong>Dinner at Osteria della Pista</strong> — Charming hotel restaurant, traditional Lombard cuisine. A quiet, well-earned final evening.</span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Allow at least 2 hours at Linate for international departures with checked luggage.</div>
+        <div class="tip-item">💡 Return the car with a full tank — airport fuel surcharges can be €20–30 extra per litre!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 9 -->
+  <div class="day-card">
+    <button class="day-toggle" onclick="toggleDay(this)" aria-expanded="false">
+      <div class="day-num-badge">09</div>
+      <div class="day-toggle-content">
+        <div class="day-city-tag">Mehdi's Departure</div>
+        <div class="day-toggle-title">Milan Malpensa → Charlotte, NC</div>
+        <div class="day-toggle-sub">Tuesday, July 28 · DL0277 11:35 → Charlotte 22:20</div>
+      </div>
+      <div class="day-chevron">▼</div>
+    </button>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><span class="tl-time">09:00</span><span class="tl-text"><strong>Check out</strong> of Osteria della Pista. Short drive to Malpensa Terminal 1.</span></li>
+        <li class="tl-item"><span class="tl-time">11:35</span><span class="tl-text">✈️ <strong>Flight DL0277</strong> departs Milan Malpensa (MXP).</span></li>
+        <li class="tl-item"><span class="tl-time">22:20</span><span class="tl-text">🏠 <strong>Arrive Charlotte (DL5807).</strong> Trip complete! <em>Arrivederci, Italia!</em> 🇮🇹</span></li>
+      </ul>
+      <div class="tips-list">
+        <div class="tip-item">💡 Check in online 24 hours before departure to secure your preferred seats.</div>
+        <div class="tip-item">💡 Pick up final Italian souvenirs at MXP duty-free: Lavazza coffee, Ferrero chocolates, grappa, Amaretto.</div>
+      </div>
+      <!-- Milan Suggestions -->
+      <div class="suggestions mt-16">
+        <div class="suggestions-title">✨ Milan & Portofino — Bonus Suggestions</div>
+        <div class="sug-grid">
+          <div class="sug-card"><h4>🎨 Brera Pinacoteca</h4><p>Milan's finest art museum — Raphael, Caravaggio, Mantegna. Often overlooked vs Duomo. Worth 2 hours.</p><a href="https://pinacotecabrera.org" target="_blank">→ pinacotecabrera.org</a></div>
+          <div class="sug-card"><h4>🏰 Castello Sforzesco</h4><p>Free courtyard & park (Parco Sempione). Museums inside ~€5. A peaceful Milan morning escape.</p><a href="https://milanocastello.it" target="_blank">→ milanocastello.it</a></div>
+          <div class="sug-card"><h4>🏖 San Fruttuoso Abbey</h4><p>Medieval abbey on a secret beach — hike or boat from Portofino. One of Italy's best hidden gems.</p><a href="https://www.fondoambiente.it" target="_blank">→ fondoambiente.it</a></div>
+          <div class="sug-card"><h4>🛍 Via Montenapoleone</h4><p>Milan's legendary fashion street. Even if you don't shop, window browsing Prada, Gucci & Versace is an experience.</p><a href="https://www.google.com/maps/search/?api=1&query=Via+Montenapoleone+Milano" target="_blank">→ Open in Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /section days -->
+
+<!-- ═══════════════════════════════════════════ HOTELS ═══ -->
+<div style="background:var(--parchment);padding:1px 0">
+<div class="section">
+  <div class="section-title"><h2>🏨 Where We're Staying</h2></div>
+  <div class="hotels-grid">
+    <div class="hotel-card">
+      <div class="hotel-name">Best Western Linate</div>
+      <div class="hotel-nights">📍 Night of July 20 (pre-connection)</div>
+      <div class="hotel-detail">Luggage drop for Mehdi on arrival. Convenient for Linate Airport connection for group flight.<br/><strong>Address:</strong> Via Rivoltana 45, Segrate MI</div>
+      <a class="map-btn mt-16" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Best+Western+Milan+Linate" target="_blank">📍 Open in Maps</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">Airbnb Rome</div>
+      <div class="hotel-nights">📍 July 20 – 23 · 3 nights</div>
+      <div class="hotel-detail"><strong>Address:</strong> Via della Frezza, 59, 00186 Roma<br/>Steps from Piazza del Popolo and the Spanish Steps. Perfect central location.</div>
+      <a class="map-btn" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Via+della+Frezza+59+Roma" target="_blank">📍 Open in Maps</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">Airbnb Florence</div>
+      <div class="hotel-nights">📍 July 23 – 24 · 1 night</div>
+      <div class="hotel-detail"><strong>Address:</strong> Via Isola delle Stinche, 2, 50122 Firenze<br/>Central Florence — short walk from the Uffizi, Ponte Vecchio, and Santa Croce.</div>
+      <a class="map-btn" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Via+Isola+delle+Stinche+2+Firenze" target="_blank">📍 Open in Maps</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">Best Western Air Hotel Linate</div>
+      <div class="hotel-nights">📍 Night of July 24</div>
+      <div class="hotel-detail">After the Bologna dinner run. Practical base near Linate for regrouping before the Portofino trip.<br/><strong>Note:</strong> All 5 reconvene here for July 25.</div>
+      <a class="map-btn" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Best+Western+Air+Hotel+Linate+Milano" target="_blank">📍 Open in Maps</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">Crowne Plaza Milan Linate by IHG</div>
+      <div class="hotel-nights">📍 July 25 – 26 · 2 nights (all 5)</div>
+      <div class="hotel-detail">The group's base for the Milan + Portofino days. Ibrahim & Hajer's base from arrival. Comfortable & well-located.</div>
+      <a class="map-btn" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Crowne+Plaza+Milan+Linate" target="_blank">📍 Maps</a>
+      &nbsp;<a class="map-btn" href="https://www.ihg.com/crowneplaza" target="_blank">🔗 IHG</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-name">Hotel Osteria della Pista</div>
+      <div class="hotel-nights">📍 Night of July 27 (Mehdi only)</div>
+      <div class="hotel-detail">Charming hotel near Malpensa — perfect for Mehdi's final night before departing. The in-house restaurant is excellent.<br/><strong>Address:</strong> Via Verbano, 1, Casorate Sempione</div>
+      <a class="map-btn" style="display:inline-flex;margin-top:10px" href="https://www.google.com/maps/search/?api=1&query=Osteria+della+Pista+Casorate+Sempione" target="_blank">📍 Maps</a>
+      &nbsp;<a class="map-btn" href="https://osteriadellapista.it" target="_blank">🔗 Website</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PACKING ═══ -->
+<div class="section">
+  <div class="section-title"><h2>🧳 Packing Checklist</h2></div>
+  <p class="check-count" id="check-count">Tap items to check them off as you pack</p>
+  <div class="checklist" id="checklist">
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Passport (valid 6+ months beyond July 2026)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Flight confirmations (printed + digital)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Hotel & Airbnb booking printouts</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Travel insurance card</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Credit card + €200–300 cash per person</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Revolut / Wise card (zero foreign fees)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Light breathable clothing (July = 30°C+)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>1 smart outfit for nicer restaurants</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Comfortable walking shoes (you'll walk 10km+/day!)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Sandals for evenings & beaches</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Scarf/shawl to cover shoulders at churches</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Sunscreen SPF 50+ (Italy summer sun is brutal)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Portable phone charger / power bank</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>EU plug adapter (Type F/L Italian socket)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Swimwear (Portofino / beach day!)</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Apps downloaded: Trenitalia, Google Maps offline, Translate</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Colosseum + Vatican tickets booked online ✓</label></div>
+    <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Uffizi Gallery tickets booked online ✓</label></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ QUICK REF TABLE ═══ -->
+<div style="background:var(--parchment);padding:1px 0">
+<div class="section">
+  <div class="section-title"><h2>🍽 Restaurant Quick-Reference</h2></div>
+  <div style="overflow-x:auto">
+  <table class="qr-table">
+    <thead>
+      <tr><th>Date</th><th>Meal</th><th>Restaurant</th><th>City</th><th>Link</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jul 20</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Sorbillo</strong></td><td>Rome</td><td><a href="https://sorbillo.it" target="_blank">sorbillo.it</a></td></tr>
+      <tr><td>Jul 21</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>Sant'Eustachio il Caffè</strong></td><td>Rome</td><td><a href="https://santeustachioilcaffe.it" target="_blank">santeustachioilcaffe.it</a></td></tr>
+      <tr><td>Jul 21</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Forno Campo de' Fiori + Supplizio</strong></td><td>Rome</td><td><a href="https://www.google.com/maps/search/?api=1&query=Forno+Campo+de+Fiori+Roma" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 21</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Il Vero Alfredo</strong></td><td>Rome</td><td><a href="https://ilveroalfredo.it" target="_blank">ilveroalfredo.it</a></td></tr>
+      <tr><td>Jul 22</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>Giolitti</strong></td><td>Rome</td><td><a href="https://giolitti.it" target="_blank">giolitti.it</a></td></tr>
+      <tr><td>Jul 22</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Mama Eat Vaticano</strong></td><td>Rome</td><td><a href="https://www.google.com/maps/search/?api=1&query=Mama+Eat+Vaticano+Roma" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 22</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Supplì Roma + Ivo Trastevere</strong></td><td>Rome</td><td><a href="https://www.google.com/maps/search/?api=1&query=Suppl%C3%AC+Roma" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 23</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>La Casa del Caffè Tazza d'Oro</strong></td><td>Rome</td><td><a href="https://www.google.com/maps/search/?api=1&query=Tazza+dOro+Roma" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 23</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Antico Vinaio</strong></td><td>Rome</td><td><a href="https://anticopaninovinaio.com" target="_blank">anticopaninovinaio.com</a></td></tr>
+      <tr><td>Jul 23</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Trattoria dall'Oste</strong></td><td>Florence</td><td><a href="https://www.google.com/maps/search/?api=1&query=Trattoria+dallOste+Firenze" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 24</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>Procacci</strong></td><td>Florence</td><td><a href="https://procacci1885.it" target="_blank">procacci1885.it</a></td></tr>
+      <tr><td>Jul 24</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Il Pizzaiuolo</strong></td><td>Florence</td><td><a href="https://www.google.com/maps/search/?api=1&query=Il+Pizzaiuolo+Firenze" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 24</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Antica Trattoria del Cacciatore</strong></td><td>Bologna</td><td><a href="https://www.google.com/maps/search/?api=1&query=Antica+Trattoria+del+Cacciatore+Bologna" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 25</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>Forno Paradiso</strong></td><td>Segrate MI</td><td><a href="https://www.google.com/maps/search/?api=1&query=Forno+Paradiso+Segrate" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 25</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Napoli 1820 / Di Gennaro</strong></td><td>Milan</td><td><a href="https://www.google.com/maps/search/?api=1&query=Di+Gennaro+Milano" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 25</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>DRY Milano</strong></td><td>Milan</td><td><a href="https://drymilano.it" target="_blank">drymilano.it</a></td></tr>
+      <tr><td>Jul 26</td><td><span class="meal-badge mb-b">Breakfast</span></td><td><strong>Ritual Café / Autogrill Dorno</strong></td><td>En route</td><td><a href="https://www.google.com/maps/search/?api=1&query=Ritual+Cafe+San+Donato+Milanese" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 26</td><td><span class="meal-badge mb-l">Lunch</span></td><td><strong>Trattoria San Siro</strong></td><td>S. Margherita</td><td><a href="https://www.google.com/maps/search/?api=1&query=Trattoria+San+Siro+Santa+Margherita+Ligure" target="_blank">📍 Maps</a></td></tr>
+      <tr><td>Jul 26</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Eataly Serravalle</strong></td><td>Serravalle</td><td><a href="https://www.eataly.net/it_en/stores/serravalle" target="_blank">eataly.net</a></td></tr>
+      <tr><td>Jul 27</td><td><span class="meal-badge mb-d">Dinner</span></td><td><strong>Osteria della Pista</strong></td><td>Casorate</td><td><a href="https://osteriadellapista.it" target="_blank">osteriadellapista.it</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ USEFUL LINKS ═══ -->
+<div class="section">
+  <div class="section-title"><h2>🔗 Useful Links</h2></div>
+  <div class="links-grid">
+    <div class="link-card"><h4>🚄 Trenitalia</h4><p>Book & manage all train tickets including Frecciarossa</p><a href="https://www.trenitalia.com" target="_blank">trenitalia.com</a></div>
+    <div class="link-card"><h4>🏛 Colosseum Tickets</h4><p>Book combined Colosseum + Forum + Palatine Hill skip-the-line</p><a href="https://www.coopculture.it" target="_blank">coopculture.it</a></div>
+    <div class="link-card"><h4>🕍 Vatican Museums</h4><p>Required advance booking — Sistine Chapel timed entry</p><a href="https://www.museivaticani.va" target="_blank">museivaticani.va</a></div>
+    <div class="link-card"><h4>🎨 Uffizi Gallery</h4><p>Florence's world-class Renaissance art museum — must pre-book in summer</p><a href="https://www.uffizi.it" target="_blank">uffizi.it</a></div>
+    <div class="link-card"><h4>🗺 Google Maps</h4><p>Download offline maps for Rome, Florence & Milan before you fly</p><a href="https://maps.google.com" target="_blank">maps.google.com</a></div>
+    <div class="link-card"><h4>🍴 TheFork</h4><p>Restaurant reservations across Italy — book popular spots in advance</p><a href="https://www.thefork.com" target="_blank">thefork.com</a></div>
+    <div class="link-card"><h4>⛴ Portofino Ferry</h4><p>Tigullio ferries between Santa Margherita and Portofino</p><a href="https://tigullio.trasporti.it" target="_blank">tigullio.trasporti.it</a></div>
+    <div class="link-card"><h4>🏰 Castello Brown</h4><p>Portofino's hilltop castle — buy tickets in advance for busy summer weekends</p><a href="https://castellobrown.com" target="_blank">castellobrown.com</a></div>
+    <div class="link-card"><h4>🚗 Avis Car Rental</h4><p>Florence pickup at Via Maso Finiguerra, 13 on July 24 at 16:00</p><a href="https://www.avis.com" target="_blank">avis.com</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ FOOTER ═══ -->
+<footer>
+  <div class="footer-flag">🇮🇹</div>
+  <div>Made with ❤️ for <strong>Mehdi · Yasmeen · Selma · Ibrahim · Hajer</strong></div>
+  <div style="margin-top:8px">La Dolce Vita · Italy · July 20–28, 2026</div>
+  <div style="margin-top:6px;font-size:10px;opacity:.5">Private Travel Document</div>
+</footer>
+
+<script>
+// ── COUNTDOWN ────────────────────────────────────────────────────────────────
+function updateCountdown() {
+  const target = new Date('2026-07-20T09:00:00').getTime();
+  const now = Date.now();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '🇮🇹';
+    document.getElementById('cd-hours').textContent = '0';
+    document.getElementById('cd-min').textContent = '0';
+    document.getElementById('cd-sec').textContent = '0';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ── ACCORDION ────────────────────────────────────────────────────────────────
+function toggleDay(btn) {
+  const body = btn.nextElementSibling;
+  const chevron = btn.querySelector('.day-chevron');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', !isOpen);
+}
+
+// ── CHECKLIST ────────────────────────────────────────────────────────────────
+function toggleCheck(el) {
+  const cb = el.querySelector('input');
+  cb.checked = !cb.checked;
+  el.classList.toggle('checked', cb.checked);
+  updateCheckCount();
+}
+function updateCheckCount() {
+  const total = document.querySelectorAll('.check-item').length;
+  const done = document.querySelectorAll('.check-item.checked').length;
+  document.getElementById('check-count').innerHTML =
+    `<strong>${done} of ${total}</strong> items packed`;
+}
+updateCheckCount();
+</script>
+</body>
+</html>
